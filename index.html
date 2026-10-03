@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080a12">
+<meta name="description" content="Nexus Realm — your universal reading library, discovery hub and reading tracker.">
+<title>Nexus Realm — Universal Reader</title>
+<style>
+:root{
+  --bg:#070912;--panel:#0e1220;--panel2:#13192a;--line:#242b40;--text:#f5f7ff;
+  --muted:#9aa4bd;--accent:#8b7cff;--accent2:#35d6c5;--danger:#ff6d8a;
+  --shadow:0 18px 60px rgba(0,0,0,.35);--radius:20px
+}
+*{box-sizing:border-box}html,body{margin:0;background:radial-gradient(circle at 80% -10%,#29245d 0,#101329 28%,var(--bg) 55%);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+button,input,select{font:inherit}button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+.app{min-height:100vh;padding-bottom:84px}.top{position:sticky;top:0;z-index:20;background:rgba(7,9,18,.82);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.06)}
+.topin{max-width:1180px;margin:auto;padding:14px 18px;display:flex;align-items:center;gap:14px}
+.logo{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,#9b8cff,#38d8c5);display:grid;place-items:center;font-weight:900;color:#080a12;box-shadow:0 8px 30px rgba(139,124,255,.28)}
+.brand{font-weight:900;letter-spacing:.3px}.sub{font-size:11px;color:var(--muted)}
+.topsearch{margin-left:auto;max-width:390px;flex:1;position:relative}.topsearch input{width:100%;background:#0c1020;border:1px solid var(--line);color:var(--text);padding:12px 14px 12px 42px;border-radius:14px;outline:none}.topsearch input:focus{border-color:#6256c9}.searchico{position:absolute;left:14px;top:11px;color:var(--muted)}
+main{max-width:1180px;margin:auto;padding:22px 18px}.hero{border:1px solid rgba(139,124,255,.2);background:linear-gradient(135deg,rgba(139,124,255,.18),rgba(53,214,197,.08)),rgba(13,17,30,.88);box-shadow:var(--shadow);border-radius:28px;padding:28px;overflow:hidden;position:relative}.hero:after{content:"";position:absolute;width:280px;height:280px;border-radius:50%;right:-90px;top:-130px;background:radial-gradient(circle,rgba(139,124,255,.34),transparent 68%)}.eyebrow{color:#a99fff;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px}.hero h1{font-size:clamp(30px,6vw,58px);line-height:1;margin:9px 0 12px;max-width:760px}.hero p{color:#c1c8da;max-width:690px;line-height:1.65;margin:0}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.btn{border:1px solid var(--line);background:#141a2c;color:var(--text);padding:11px 15px;border-radius:13px;font-weight:750}.btn:hover{filter:brightness(1.13)}.btn.primary{border:0;background:linear-gradient(135deg,#8b7cff,#5f51d9)}.btn.green{border:0;background:linear-gradient(135deg,#35d6c5,#258f9f);color:#061313}.btn.ghost{background:transparent}.btn.small{padding:8px 11px;font-size:12px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.section{margin-top:28px}.sectionhead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:13px}.sectionhead h2{font-size:19px;margin:0}.muted{color:var(--muted)}.card{background:linear-gradient(180deg,rgba(19,25,42,.96),rgba(12,16,29,.96));border:1px solid var(--line);border-radius:var(--radius);padding:15px;box-shadow:0 10px 35px rgba(0,0,0,.16)}.book{min-height:230px;display:flex;flex-direction:column}.cover{height:132px;border-radius:14px;background:linear-gradient(145deg,#28204e,#102f38);display:flex;align-items:flex-end;padding:13px;position:relative;overflow:hidden;margin-bottom:13px}.cover:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 15%,rgba(255,255,255,.22),transparent 35%)}.cover span{position:relative;font-size:11px;font-weight:850;text-transform:uppercase;letter-spacing:1px;color:#dce5ff}.book h3{margin:0 0 5px;font-size:15px}.book .meta{font-size:12px;color:var(--muted);min-height:32px}.book .cardactions{margin-top:auto;padding-top:12px;display:flex;gap:7px}.tag{display:inline-flex;padding:5px 8px;border-radius:999px;background:#191f34;border:1px solid #2a3350;color:#b9c2d8;font-size:10px;font-weight:800}.platform{display:flex;align-items:center;gap:11px}.platform .picon{width:42px;height:42px;border-radius:13px;background:#1b2237;display:grid;place-items:center;font-weight:900}.platform h3{margin:0;font-size:15px}.platform p{margin:3px 0 0;font-size:12px;color:var(--muted)}.stat{padding:18px}.stat strong{font-size:27px;display:block}.stat span{font-size:12px;color:var(--muted)}
+.tabs{display:flex;gap:8px;overflow:auto;padding:3px 0 5px;margin-bottom:10px}.tab{white-space:nowrap;border:1px solid var(--line);background:#0d1220;color:#aeb7cd;border-radius:999px;padding:9px 13px}.tab.active{background:#282451;color:#fff;border-color:#554ca1}
+.controls{display:flex;flex-wrap:wrap;gap:9px}.controls input,.controls select{background:#0c1020;color:var(--text);border:1px solid var(--line);padding:10px 12px;border-radius:12px;outline:none}
+.progress{height:7px;background:#20263a;border-radius:99px;overflow:hidden;margin-top:9px}.progress i{display:block;height:100%;background:linear-gradient(90deg,#8b7cff,#35d6c5);border-radius:99px}
+.bottom{position:fixed;bottom:0;left:0;right:0;z-index:30;background:rgba(8,10,18,.94);backdrop-filter:blur(18px);border-top:1px solid rgba(255,255,255,.08);padding:8px}.nav{max-width:700px;margin:auto;display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.nav button{background:transparent;border:0;color:#8791aa;padding:7px 3px;border-radius:12px;font-size:11px}.nav button.active{color:#fff;background:#171d31}.nav b{display:block;font-size:17px;margin-bottom:2px}
+.empty{padding:35px;text-align:center;border:1px dashed #2b334a;border-radius:18px;color:var(--muted)}
+.modalback{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);z-index:60;display:none;padding:18px;align-items:flex-end;justify-content:center}.modalback.show{display:flex}.modal{width:min(720px,100%);max-height:88vh;overflow:auto;background:#0d1220;border:1px solid #303954;border-radius:24px;padding:20px;box-shadow:var(--shadow)}.modalhead{display:flex;justify-content:space-between;gap:15px}.x{background:#171d2e;border:1px solid var(--line);color:#fff;width:38px;height:38px;border-radius:12px}.modal h2{margin:4px 0 8px}.modal p{line-height:1.65;color:#c0c8da}.source{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px;background:#11182a;border:1px solid var(--line);border-radius:14px;margin:9px 0}.toast{position:fixed;left:50%;bottom:92px;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:80;background:#f3f5ff;color:#0a0d17;padding:11px 15px;border-radius:13px;font-weight:750;transition:.22s}.toast.show{opacity:1;transform:translate(-50%,0)}
+.hide{display:none!important}.premium{border-color:#5e50bd;background:linear-gradient(135deg,rgba(94,80,189,.2),rgba(53,214,197,.08))}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.three{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.topsearch{display:none}.hero{padding:22px}.grid,.grid.three,.grid.two{grid-template-columns:1fr 1fr}.card{padding:12px}.cover{height:115px}.hero h1{font-size:36px}.section{margin-top:23px}}
+@media(max-width:390px){.grid,.grid.three,.grid.two{grid-template-columns:1fr}.hero h1{font-size:31px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top"><div class="topin">
+  <div class="logo">NR</div>
+  <div><div class="brand">NEXUS REALM</div><div class="sub">Universal Reading Hub</div></div>
+  <div class="topsearch"><span class="searchico">⌕</span><input id="globalSearch" placeholder="Search books, authors, genres..." /></div>
+</div></header>
+
+<main>
+<section id="home" class="page">
+  <div class="hero">
+    <div class="eyebrow">One library. Many worlds.</div>
+    <h1>Your reading universe, connected.</h1>
+    <p>Discover stories across compatible reading platforms, organize your library, track progress and keep your reading life in one place.</p>
+    <div class="actions"><button class="btn primary" data-go="explore">Explore stories</button><button class="btn green" data-go="library">Open my library</button><button class="btn ghost" data-go="platforms">Browse platforms</button></div>
+  </div>
+
+  <div class="section"><div class="sectionhead"><h2>Continue reading</h2><button class="btn small ghost" data-go="library">View library</button></div><div id="continueGrid" class="grid"></div></div>
+  <div class="section"><div class="sectionhead"><h2>Discover something new</h2><button class="btn small ghost" data-go="explore">See all</button></div><div id="homeBooks" class="grid"></div></div>
+  <div class="section"><div class="sectionhead"><h2>Reading at a glance</h2></div><div id="statsGrid" class="grid"></div></div>
+</section>
+
+<section id="explore" class="page hide">
+  <div class="sectionhead"><div><h2>Explore</h2><div class="muted">Discover books from supported sources.</div></div></div>
+  <div class="controls"><input id="exploreSearch" placeholder="Search title or author..." /><select id="genreFilter"><option value="">All genres</option><option>Fantasy</option><option>Romance</option><option>Xianxia</option><option>Sci-Fi</option><option>Mystery</option><option>Horror</option></select><select id="platformFilter"><option value="">All platforms</option><option>Webnovel</option><option>Wattpad</option><option>Tapas</option><option>Scribble Hub</option><option>Royal Road</option></select></div>
+  <div class="tabs" id="exploreTabs"><button class="tab active" data-sort="discover">For you</button><button class="tab" data-sort="new">New</button><button class="tab" data-sort="popular">Popular</button><button class="tab" data-sort="saved">Saved</button></div>
+  <div id="exploreGrid" class="grid"></div>
+</section>
+
+<section id="library" class="page hide">
+  <div class="sectionhead"><div><h2>My Library</h2><div class="muted">Your personal reading shelf.</div></div><button class="btn small" id="clearLibrary">Clear saved</button></div>
+  <div class="tabs" id="libraryTabs"><button class="tab active" data-lib="all">All</button><button class="tab" data-lib="reading">Reading</button><button class="tab" data-lib="completed">Completed</button><button class="tab" data-lib="want">Want to read</button><button class="tab" data-lib="favorite">Favorites</button></div>
+  <div id="libraryGrid" class="grid"></div>
+</section>
+
+<section id="platforms" class="page hide">
+  <div class="sectionhead"><div><h2>Platforms</h2><div class="muted">Nexus Realm is designed as a discovery and tracking layer, not a copy of third-party books.</div></div></div>
+  <div id="platformGrid" class="grid two"></div>
+  <div class="section"><div class="card premium"><div class="eyebrow">NEXUS REALM PREMIUM</div><h2>More power for serious readers.</h2><p class="muted">Advanced library tools, cloud-ready sync architecture, richer statistics, recommendations and future integrations.</p><button class="btn primary" id="premiumBtn">Get Premium</button></div></div>
+</section>
+
+<section id="profile" class="page hide">
+  <div class="card"><div class="platform"><div class="picon">✦</div><div><h3 id="profileName">Nexus Reader</h3><p>Your reading profile</p></div></div><div class="actions"><button class="btn small" id="editName">Edit name</button><button class="btn small" id="exportData">Export library</button><button class="btn small" id="resetData">Reset local data</button></div></div>
+  <div class="section"><div class="sectionhead"><h2>Reading statistics</h2></div><div id="profileStats" class="grid"></div></div>
+  <div class="section"><div class="sectionhead"><h2>Recent activity</h2></div><div id="activity"></div></div>
+</section>
+</main>
+
+<nav class="bottom"><div class="nav">
+  <button data-go="home" class="active"><b>⌂</b>Home</button>
+  <button data-go="explore"><b>⌕</b>Explore</button>
+  <button data-go="library"><b>▣</b>Library</button>
+  <button data-go="platforms"><b>◈</b>Sources</button>
+  <button data-go="profile"><b>◉</b>Profile</button>
+</div></nav>
+</div>
+
+<div id="modalBack" class="modalback"><div class="modal">
+  <div class="modalhead"><div><div id="modalTag" class="eyebrow"></div><h2 id="modalTitle"></h2></div><button class="x" id="closeModal">×</button></div>
+  <p id="modalText"></p><div id="modalSources"></div><div class="actions"><button class="btn primary" id="modalRead">Open original source</button><button class="btn" id="modalSave">Save to library</button></div>
+</div></div>
+<div id="toast" class="toast"></div>
+
+<script>
+const GUMROAD_URL="https://terranexus2.gumroad.com/l/mhflc";
+const KEY="nexusRealmUniversal_v2";
+const books=[
+ {id:"starless",title:"Starless Crown",author:"ABTERRA NEXUS STUDIO",genre:"Fantasy",platform:"Webnovel",chapters:120,progress:38,pop:98,color:"violet",url:"https://www.webnovel.com/"},
+ {id:"moon",title:"Moonlit Letters",author:"Community Discovery",genre:"Romance",platform:"Wattpad",chapters:74,progress:0,pop:91,color:"rose",url:"https://www.wattpad.com/"},
+ {id:"jade",title:"Jade Immortal",author:"Community Discovery",genre:"Xianxia",platform:"Scribble Hub",chapters:210,progress:64,pop:96,color:"jade",url:"https://www.scribblehub.com/"},
+ {id:"echo",title:"Echoes Beyond Orion",author:"Community Discovery",genre:"Sci-Fi",platform:"Royal Road",chapters:88,progress:12,pop:87,color:"blue",url:"https://www.royalroad.com/"},
+ {id:"ink",title:"The Inkbound Door",author:"Community Discovery",genre:"Mystery",platform:"Tapas",chapters:56,progress:0,pop:84,color:"gold",url:"https://tapas.io/"},
+ {id:"ashes",title:"Ashes of the Ninth Sky",author:"Community Discovery",genre:"Fantasy",platform:"Royal Road",chapters:145,progress:0,pop:93,color:"violet",url:"https://www.royalroad.com/"},
+ {id:"silk",title:"Silk & Starlight",author:"Community Discovery",genre:"Romance",platform:"Tapas",chapters:42,progress:0,pop:81,color:"rose",url:"https://tapas.io/"},
+ {id:"dragon",title:"Dragon Sect Reborn",author:"Community Discovery",genre:"Xianxia",platform:"Webnovel",chapters:330,progress:0,pop:95,color:"jade",url:"https://www.webnovel.com/"}
+];
+const platforms=[
+ {name:"Webnovel",desc:"Online novels and serialized fiction",url:"https://www.webnovel.com/",icon:"W"},
+ {name:"Wattpad",desc:"Stories, novels and community writers",url:"https://www.wattpad.com/",icon:"W"},
+ {name:"Tapas",desc:"Comics, novels and episodic stories",url:"https://tapas.io/",icon:"T"},
+ {name:"Scribble Hub",desc:"Web fiction discovery and reading",url:"https://www.scribblehub.com/",icon:"S"},
+ {name:"Royal Road",desc:"Web novels and serial fiction",url:"https://www.royalroad.com/",icon:"R"},
+ {name:"More integrations",desc:"Future sources can be added through official APIs or permitted links.",url:"#",icon:"+"}
+];
+let state=load();
+function load(){try{return Object.assign({saved:[],status:{},profile:"Nexus Reader",activity:[]},JSON.parse(localStorage.getItem(KEY)||"{}"))}catch(e){return {saved:[],status:{},profile:"Nexus Reader",activity:[]}}}
+function save(){localStorage.setItem(KEY,JSON.stringify(state))}
+function book(id){return books.find(b=>b.id===id)}
+function toast(t){const e=document.getElementById("toast");e.textContent=t;e.classList.add("show");clearTimeout(window.tt);window.tt=setTimeout(()=>e.classList.remove("show"),1800)}
+function isSaved(id){return state.saved.includes(id)}
+function addActivity(text){state.activity.unshift({text,time:new Date().toLocaleString()});state.activity=state.activity.slice(0,20);save()}
+function saveBook(id){if(!isSaved(id)){state.saved.push(id);if(!state.status[id])state.status[id]={state:"want",progress:book(id).progress||0};addActivity("Saved “"+book(id).title+"” to your library.");toast("Saved to your library")}else toast("Already in your library");renderAll()}
+function cycleStatus(id){let s=state.status[id]||{state:"want",progress:0};if(s.state==="want"){s.state="reading";s.progress=Math.max(1,s.progress||5)}else if(s.state==="reading"){s.state="completed";s.progress=100}else{s.state="reading";s.progress=5}state.status[id]=s;addActivity("Updated “"+book(id).title+"” → "+s.state+".");save();renderAll()}
+function card(b){let s=state.status[b.id]||{state:"want",progress:b.progress||0};let saved=isSaved(b.id);return `<article class="card book">
+ <div class="cover ${b.color}"><span>${b.platform} · ${b.genre}</span></div>
+ <h3>${esc(b.title)}</h3><div class="meta">${esc(b.author)}<br>${b.chapters} chapters · ${s.state}</div>
+ <div class="progress"><i style="width:${Math.min(100,s.progress||0)}%"></i></div>
+ <div class="cardactions"><button class="btn small primary" data-open="${b.id}">Open</button><button class="btn small" data-save="${b.id}">${saved?"Saved":"Save"}</button></div>
+ </article>`}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function renderHome(){
+ const reading=books.filter(b=>{let s=state.status[b.id];return s&&s.state==="reading"});document.getElementById("continueGrid").innerHTML=(reading.length?reading:books.filter(b=>b.progress>0).slice(0,4)).map(card).join("");
+ document.getElementById("homeBooks").innerHTML=books.slice(0,4).map(card).join("");
+ const completed=Object.values(state.status).filter(s=>s.state==="completed").length;
+ const chapters=Object.values(state.status).reduce((n,s)=>n+Math.round((s.progress||0)/100*(book(Object.keys(state.status).find(k=>state.status[k]===s))?.chapters||0)),0);
+ document.getElementById("statsGrid").innerHTML=`<div class="card stat"><strong>${state.saved.length}</strong><span>Saved books</span></div><div class="card stat"><strong>${completed}</strong><span>Completed</span></div><div class="card stat"><strong>${state.activity.length}</strong><span>Activity events</span></div><div class="card stat"><strong>${new Set(state.saved.map(id=>book(id)?.platform)).size}</strong><span>Sources used</span></div>`;
+}
+let exploreSort="discover",libFilter="all";
+function filteredBooks(){let q=(document.getElementById("exploreSearch")?.value||document.getElementById("globalSearch")?.value||"").toLowerCase(),g=document.getElementById("genreFilter")?.value||"",p=document.getElementById("platformFilter")?.value||"";let arr=books.filter(b=>(!q||(b.title+" "+b.author+" "+b.genre).toLowerCase().includes(q))&&(!g||b.genre===g)&&(!p||b.platform===p));if(exploreSort==="new")arr=[...arr].reverse();if(exploreSort==="popular")arr.sort((a,b)=>b.pop-a.pop);if(exploreSort==="saved")arr=arr.filter(b=>isSaved(b.id));return arr}
+function renderExplore(){let arr=filteredBooks();document.getElementById("exploreGrid").innerHTML=arr.length?arr.map(card).join(""):`<div class="empty" style="grid-column:1/-1">No matching stories found. Try another search or filter.</div>`}
+function renderLibrary(){let arr=books.filter(b=>isSaved(b.id));arr=arr.filter(b=>{if(libFilter==="all")return true;let s=state.status[b.id]||{state:"want"};if(libFilter==="favorite")return s.favorite;return s.state===libFilter});document.getElementById("libraryGrid").innerHTML=arr.length?arr.map(card).join(""):`<div class="empty" style="grid-column:1/-1">Your shelf is empty here. Explore a story and save it.</div>`}
+function renderPlatforms(){document.getElementById("platformGrid").innerHTML=platforms.map(p=>`<div class="card platform"><div class="picon">${p.icon}</div><div style="flex:1"><h3>${p.name}</h3><p>${p.desc}</p></div><button class="btn small" data-platform="${p.url}">Open</button></div>`).join("")}
+function renderProfile(){document.getElementById("profileName").textContent=state.profile;let completed=books.filter(b=>state.status[b.id]?.state==="completed").length,reading=books.filter(b=>state.status[b.id]?.state==="reading").length;document.getElementById("profileStats").innerHTML=`<div class="card stat"><strong>${state.saved.length}</strong><span>Library</span></div><div class="card stat"><strong>${reading}</strong><span>Reading</span></div><div class="card stat"><strong>${completed}</strong><span>Completed</span></div><div class="card stat"><strong>${state.activity.length}</strong><span>Activity</span></div>`;document.getElementById("activity").innerHTML=state.activity.length?state.activity.map(a=>`<div class="card" style="margin-bottom:8px"><b>${esc(a.text)}</b><div class="muted" style="font-size:11px;margin-top:4px">${esc(a.time)}</div></div>`).join(""):`<div class="empty">Your reading activity will appear here.</div>`}
+function renderAll(){renderHome();renderExplore();renderLibrary();renderPlatforms();renderProfile();wireCards()}
+function wireCards(){document.querySelectorAll("[data-open]").forEach(x=>x.onclick=()=>openBook(x.dataset.open));document.querySelectorAll("[data-save]").forEach(x=>x.onclick=()=>saveBook(x.dataset.save));document.querySelectorAll("[data-platform]").forEach(x=>x.onclick=()=>{if(x.dataset.platform!=="#")window.open(x.dataset.platform,"_blank","noopener")});}
+function showPage(id){document.querySelectorAll(".page").forEach(p=>p.classList.add("hide"));document.getElementById(id).classList.remove("hide");document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.go===id));window.scrollTo({top:0,behavior:"smooth"})}
+function openBook(id){let b=book(id);if(!b)return;let s=state.status[id]||{state:"want",progress:0};document.getElementById("modalTag").textContent=b.platform+" · "+b.genre;document.getElementById("modalTitle").textContent=b.title;document.getElementById("modalText").textContent=`By ${b.author}. Nexus Realm keeps your discovery, library and progress in one place. Reading content remains on the original source unless a future integration is officially permitted.`;document.getElementById("modalSources").innerHTML=`<div class="source"><div><b>Current status</b><div class="muted">${s.state} · ${s.progress||0}%</div></div><button class="btn small" id="cycleBtn">${s.state==="completed"?"Resume":"Update progress"}</button></div><div class="source"><div><b>Original source</b><div class="muted">${b.platform}</div></div><button class="btn small" id="sourceBtn">Open</button></div>`;document.getElementById("modalRead").onclick=()=>window.open(b.url,"_blank","noopener");document.getElementById("modalSave").onclick=()=>saveBook(id);document.getElementById("sourceBtn").onclick=()=>window.open(b.url,"_blank","noopener");document.getElementById("cycleBtn").onclick=()=>{cycleStatus(id);openBook(id)};document.getElementById("modalBack").classList.add("show")}
+document.getElementById("closeModal").onclick=()=>document.getElementById("modalBack").classList.remove("show");document.getElementById("modalBack").onclick=e=>{if(e.target.id==="modalBack")e.currentTarget.classList.remove("show")};
+document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>showPage(b.dataset.go));
+document.querySelectorAll("#exploreTabs .tab").forEach(b=>b.onclick=()=>{document.querySelectorAll("#exploreTabs .tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");exploreSort=b.dataset.sort;renderExplore();wireCards()});
+document.querySelectorAll("#libraryTabs .tab").forEach(b=>b.onclick=()=>{document.querySelectorAll("#libraryTabs .tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");libFilter=b.dataset.lib;renderLibrary();wireCards()});
+["globalSearch","exploreSearch","genreFilter","platformFilter"].forEach(id=>document.getElementById(id)?.addEventListener("input",()=>{if(id==="globalSearch"){showPage("explore");document.getElementById("exploreSearch").value=document.getElementById(id).value}renderExplore();wireCards()}));
+document.getElementById("clearLibrary").onclick=()=>{if(confirm("Remove all saved books?")){state.saved=[];save();renderAll();toast("Library cleared")}};
+document.getElementById("premiumBtn").onclick=()=>window.open(GUMROAD_URL,"_blank","noopener");
+document.getElementById("editName").onclick=()=>{let n=prompt("Your reader name:",state.profile);if(n&&n.trim()){state.profile=n.trim().slice(0,40);save();renderProfile();toast("Profile updated")}};
+document.getElementById("resetData").onclick=()=>{if(confirm("Reset all local Nexus Realm data?")){localStorage.removeItem(KEY);state=load();renderAll();toast("Local data reset")}};
+document.getElementById("exportData").onclick=()=>{const blob=new Blob([JSON.stringify(state,null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="nexus-realm-library.json";a.click();URL.revokeObjectURL(a.href);toast("Library exported")};
+renderAll();
+</script>
+</body>
+</html>
